@@ -1,22 +1,19 @@
 <template>
   <div id="app">
-    <div :style="{ fontSize: postFontSize + 'em' }">
-      <blog-post :content="content" @enlarge-text="onEnlargeText"></blog-post>
-    </div>
+    <custom-input v-model="searchText"></custom-input>
   </div>
 </template>
 
 <script>
-import blogPost from '@/components/blogPost'
+import customInput from '@/components/customInput'
 export default {
   name: 'App',
   components: {
-    blogPost
+    customInput
   },
   data () {
     return {
-      content: "我是内容",
-      postFontSize: 1
+      searchText: "内容"
     }
   },
   methods: {
