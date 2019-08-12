@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <p>{{ message }}</p>
+    <span v-bind:title="message">
+      鼠标悬停几秒钟查看此处动态绑定的提示信息！
+    </span>
   </div>
 </template>
 
@@ -9,7 +11,7 @@ export default {
   name: 'App',
   data () {
     return {
-      message: 'Hello Vue!'
+      message: '页面加载于 ' + new Date().toLocaleString()
     }
   }
 }
