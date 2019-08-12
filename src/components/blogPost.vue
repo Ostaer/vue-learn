@@ -1,13 +1,21 @@
 <template>
   <div>
-    <h3>{{ title }}</h3>
+    <div>
+      <button @click="enlargeText">Enlarge text</button>
+      <span v-html="content"></span>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: 'blogPost',
-  props: ['title']
+  props: ['content'],
+  methods: {
+    enlargeText () {
+      this.$emit('enlarge-text', 0.1)
+    }
+  }
 }
 </script>
 
