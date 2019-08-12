@@ -7,19 +7,30 @@
 </head>
 <body>
 <div id="app">
-  <input type="radio" id="one" value="One" v-model="picked">
-  <label for="one">One</label>
+  <select v-model="selected">
+    <option disabled value="">请选择</option>
+    <option>A</option>
+    <option>B</option>
+    <option>C</option>
+  </select>
+  <br/>
+  <span>Selected: {{ selected }}</span>
+  <br/>
+  <select v-model="multiSelected" multiple style="width: 50px;">
+    <option>A</option>
+    <option>B</option>
+    <option>C</option>
+  </select>
   <br>
-  <input type="radio" id="two" value="Two" v-model="picked">
-  <label for="two">Two</label>
-  <br>
-  <span>Picked: {{ picked }}</span>
+  <br/>
+  <span>multiSelected: {{ multiSelected }}</span>
 </div>
 <script>
   new Vue({
     el: '#app',
     data: {
-      picked: ''
+      selected: '',
+      multiSelected: []
     }
   })
 </script>
