@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <p>{{ message }}</p>
-    <button v-on:click="reverseMessage">反转消息</button>
+    <p>原始字符串: {{ message }}</p>
+    <p>计算后反转字符串: {{ reversedMessage }}</p>
   </div>
 </template>
 
@@ -10,12 +10,14 @@ export default {
   name: 'App',
   data () {
     return {
-      message: 'Hello Vue.js!'
+      message: 'Hello!'
     }
   },
-  methods: {
-    reverseMessage: function () {
-      this.message = this.message.split('').reverse().join('')
+  computed: {
+    // 计算属性的 getter
+    reversedMessage: function () {
+      // `this` 指向 vm 实例
+      return this.message.split('').reverse().join('')
     }
   }
 }
