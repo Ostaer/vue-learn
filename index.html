@@ -7,31 +7,20 @@
 </head>
 <body>
 <div id="app">
-  <select v-model="selected">
-    <option disabled value="">请选择</option>
-    <option>A</option>
-    <option>B</option>
-    <option>C</option>
-  </select>
-  <br/>
-  <span>Selected: {{ selected }}</span>
-  <br/>
-  <select v-model="multiSelected" multiple style="width: 50px;">
-    <option>A</option>
-    <option>B</option>
-    <option>C</option>
-  </select>
-  <br>
-  <br/>
-  <span>multiSelected: {{ multiSelected }}</span>
+  <button-counter></button-counter>
+  <button-counter></button-counter>
 </div>
 <script>
+  Vue.component('button-counter', {
+    data () {
+      return {
+        count: 0
+      }
+    },
+    template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+  })
   new Vue({
     el: '#app',
-    data: {
-      selected: '',
-      multiSelected: []
-    }
   })
 </script>
 
