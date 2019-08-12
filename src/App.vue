@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <span v-bind:title="message">
-      鼠标悬停几秒钟查看此处动态绑定的提示信息！
-    </span>
+    <p v-if="seen">现在你看到我了: v-if</p>
+    <p v-show="seen">现在你看到我了: v-show</p>
+    <p>当前seen: {{ seen }}</p>
   </div>
 </template>
 
@@ -11,7 +11,7 @@ export default {
   name: 'App',
   data () {
     return {
-      message: '页面加载于 ' + new Date().toLocaleString()
+      seen: false
     }
   }
 }
