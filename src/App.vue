@@ -1,22 +1,27 @@
 <template>
   <div id="app">
-    <button-counter></button-counter>
-    <button-counter></button-counter>
+    <blog-post :title="title"></blog-post>
   </div>
 </template>
 
 <script>
-import buttonCounter from '@/components/buttonCounter'
+import blogPost from '@/components/blogPost'
 export default {
   name: 'App',
   components: {
-    buttonCounter
+    blogPost
+  },
+  data () {
+    return {
+      title: '我是父组件标题'
+    }
   }
 }
 </script>
 
 <style>
 #app {
+  -webkit-font-smoothing: antialiased;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
