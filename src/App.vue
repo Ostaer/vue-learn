@@ -1,7 +1,14 @@
 <template>
   <div id="app">
-    <input v-model="message" placeholder="编辑我……">
-    <p>{{ message }}</p>
+    <p>单个复选框：</p>
+    <input type="checkbox" id="checkbox"  v-model="checked">
+    <label for="checkbox">{{ checked }}</label>
+    <p>多个复选框：</p>
+    <input type="checkbox" id="wangzhe" value="wangzhe" v-model="checkedNames">   <label for="wangzhe">Runoob</label>
+    <input type="checkbox" id="google" value="Google"  v-model="checkedNames">     <label for="google">Google</label>
+    <input type="checkbox" id="taobao" value="Taobao"   v-model="checkedNames">   <label for="taobao">taobao</label>
+    <br>
+    <span>选择的值为: {{ checkedNames }}</span>
   </div>
 </template>
 
@@ -10,7 +17,8 @@ export default {
   name: 'App',
   data () {
     return {
-      message: 'Hello'
+      checked : false,
+      checkedNames: []
     }
   },
 }
