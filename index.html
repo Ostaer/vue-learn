@@ -5,37 +5,24 @@
   <meta charset="utf-8"/>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
-<body>
-<div id="app">
-  <div :style="{ fontSize: postFontSize + 'em' }">
-    <blog-post :content="content" @enlarge-text="onEnlargeText"></blog-post>
-  </div>
+<body><div id="app">
+  <custom-input v-model="searchText"></custom-input>
 </div>
-
 <script>
-  Vue.component('blog-post', {
-    props: ['content'],
-    template: `<div>
-                <button @click="enlargeText">Enlarge text</button>
-                <span v-html="content"></span>
-              </div>`,
-    methods: {
-      enlargeText() {
-        this.$emit('enlarge-text', 0.1)
-      }
-    }
+  Vue.component('custom-input', {
+    props: ['value'],
+    template: `
+    <input
+      v-bind:value="value"
+      v-on:input="$emit('input', $event.target.value)"
+    >
+  `
   })
   new Vue({
     el: '#app',
     data() {
       return {
-        content: "我是内容",
-        postFontSize: 1
-      }
-    },
-    methods: {
-      onEnlargeText: function (enlargeAmount) {
-        this.postFontSize += enlargeAmount
+        searchText: "内容"
       }
     }
   })
