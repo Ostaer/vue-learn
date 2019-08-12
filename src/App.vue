@@ -10,12 +10,16 @@ export default {
   data () {
     return {
       firstName: 'Foo',
-      lastName: 'Bar'
+      lastName: 'Bar',
+      fullName: 'Foo Bar'
     }
   },
-  computed: {
-    fullName: function () {
-      return this.firstName + ' ' + this.lastName
+  watch: {
+    firstName: function (val) {
+      this.fullName = val + ' ' + this.lastName
+    },
+    lastName: function (val) {
+      this.fullName = this.firstName + ' ' + val
     }
   }
 }
