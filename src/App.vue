@@ -1,38 +1,21 @@
 <template>
   <div id="app">
-    <select v-model="selected">
-      <option disabled value="">请选择</option>
-      <option>A</option>
-      <option>B</option>
-      <option>C</option>
-    </select>
-    <br/>
-    <span>Selected: {{ selected }}</span>
-    <br/>
-    <select v-model="multiSelected" multiple style="width: 50px;">
-      <option>A</option>
-      <option>B</option>
-      <option>C</option>
-    </select>
-    <br>
-    <br/>
-    <span>multiSelected: {{ multiSelected }}</span>
+    <button-counter></button-counter>
+    <button-counter></button-counter>
   </div>
 </template>
 
 <script>
+import buttonCounter from '@/components/buttonCounter'
 export default {
   name: 'App',
-  data () {
-    return {
-      selected: '',
-      multiSelected: []
-    }
-  },
+  components: {
+    buttonCounter
+  }
 }
 </script>
 
-<style lang="less">
+<style>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
