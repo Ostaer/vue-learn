@@ -1,6 +1,10 @@
 <template>
   <div id="app">
-    <blog-post :title="title"></blog-post>
+    <blog-post
+      v-for="post in posts"
+      :key="post.id"
+      :title="post.title"
+    ></blog-post>
   </div>
 </template>
 
@@ -13,7 +17,11 @@ export default {
   },
   data () {
     return {
-      title: '我是父组件标题'
+      posts: [
+        {id: 1, title: 'My journey with Vue'},
+        {id: 2, title: 'Blogging with Vue'},
+        {id: 3, title: 'Why Vue is so fun'}
+      ]
     }
   }
 }

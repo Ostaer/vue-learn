@@ -7,15 +7,7 @@
 <script>
 export default {
   name: 'blogPost',
-  props: [
-    {
-      title: {
-        type: String,
-        require: true,
-        default: () => 'default Title'
-      }
-    }
-  ]
+  props: ['title']
 }
 </script>
 
