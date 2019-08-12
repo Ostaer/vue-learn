@@ -7,39 +7,28 @@
 </head>
 <body>
 <div id="app">
-  <alert-box>
-    <template>
-      <span style="color: red;">这是插槽内容</span>
-    </template>
-  </alert-box>
+  <blog-post :title="title"></blog-post>
 </div>
 <script>
-  Vue.component('alert-box', {
-    template: `
-    <div class="demo-alert-box">
-      <strong>Error!</strong>
-      <slot></slot>
-    </div>
-  `
+  Vue.component('blog-post', {
+    props: {
+        title: {
+          type: String,
+          require: true,
+          default: () => "default Title"
+        }
+    },
+    template: '<h3>{{ title }}</h3>'
   })
   new Vue({
     el: '#app',
     data() {
-      return {}
+      return {
+        title: "我是父组件标题"
+      }
     }
   })
 </script>
 
 </body>
 </html>
-<style lang="less">
-  .demo-alert-box {
-    height: auto;
-    width: 100%;
-    border: 1px;
-    text-align: center;
-    -moz-box-shadow: 2px 2px 5px #333333;
-    -webkit-box-shadow: 2px 2px 5px #333333;
-    box-shadow: 2px 2px 5px #333333;
-  }
-</style>
