@@ -1,7 +1,6 @@
 <template>
   <div id="app">
-    <p>原始字符串: {{ message }}</p>
-    <p>计算后反转字符串: {{ reversedMessage }}</p>
+    {{ fullName }}
   </div>
 </template>
 
@@ -10,14 +9,13 @@ export default {
   name: 'App',
   data () {
     return {
-      message: 'Hello!'
+      firstName: 'Foo',
+      lastName: 'Bar'
     }
   },
   computed: {
-    // 计算属性的 getter
-    reversedMessage: function () {
-      // `this` 指向 vm 实例
-      return this.message.split('').reverse().join('')
+    fullName: function () {
+      return this.firstName + ' ' + this.lastName
     }
   }
 }
