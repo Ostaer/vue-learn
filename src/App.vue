@@ -1,10 +1,7 @@
 <template>
   <div id="app">
-    <ul>
-      <li v-for="(value, key, index) in object" :key="`object_${key}`">
-        {{key}} : {{ value }}
-      </li>
-    </ul>
+    <p>{{ message }}</p>
+    <button v-on:click="reverseMessage">反转消息</button>
   </div>
 </template>
 
@@ -13,11 +10,12 @@ export default {
   name: 'App',
   data () {
     return {
-      object: {
-        name: '王者荣耀',
-        url: 'https://pvp.qq.com/',
-        slogan: '玩的不仅是技术，更是梦想！'
-      }
+      message: 'Hello Vue.js!'
+    }
+  },
+  methods: {
+    reverseMessage: function () {
+      this.message = this.message.split('').reverse().join('')
     }
   }
 }
