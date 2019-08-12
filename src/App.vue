@@ -1,8 +1,10 @@
 <template>
   <div id="app">
-    <p v-if="seen">现在你看到我了: v-if</p>
-    <p v-show="seen">现在你看到我了: v-show</p>
-    <p>当前seen: {{ seen }}</p>
+    <ol>
+      <p v-for="(todo, index) in todos" :key="`todo_${index}`">
+        {{ todo.text }}
+      </p>
+    </ol>
   </div>
 </template>
 
@@ -11,7 +13,11 @@ export default {
   name: 'App',
   data () {
     return {
-      seen: false
+      todos: [
+        { text: '学习 JavaScript' },
+        { text: '学习 Vue' },
+        { text: '整个牛项目' }
+      ]
     }
   }
 }
