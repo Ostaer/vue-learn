@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <ol>
-      <p v-for="(todo, index) in todos" :key="`todo_${index}`">
-        {{ todo.text }}
-      </p>
-    </ol>
+    <ul>
+      <li v-for="(value, key, index) in object" :key="`object_${key}`">
+        {{key}} : {{ value }}
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -13,11 +13,11 @@ export default {
   name: 'App',
   data () {
     return {
-      todos: [
-        { text: '学习 JavaScript' },
-        { text: '学习 Vue' },
-        { text: '整个牛项目' }
-      ]
+      object: {
+        name: '王者荣耀',
+        url: 'https://pvp.qq.com/',
+        slogan: '玩的不仅是技术，更是梦想！'
+      }
     }
   }
 }
