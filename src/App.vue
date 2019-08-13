@@ -1,6 +1,11 @@
 <template>
   <div id="app">
-    {{ message }}
+    <div>
+      <router-link to="/home">进入home</router-link>
+    </div>
+    <div>
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
