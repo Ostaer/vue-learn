@@ -9,6 +9,16 @@ const routes = [
   {
     path: '/argu/:name',
     component: () => import('@/components/argu.vue')
+  },
+  {
+    path: '/parent',
+    component: () => import('@/components/parent.vue'),
+    children: [
+      {
+        path: 'child',
+        component: () => import('@/components/child.vue')
+      }
+    ]
   }
 ]
 
