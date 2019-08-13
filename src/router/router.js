@@ -19,6 +19,14 @@ const routes = [
         component: () => import('@/components/child.vue')
       }
     ]
+  },
+  {
+    path: '/named_view',
+    components: {
+      default: () => import('@/components/child.vue'),
+      email: () => import('@/components/email.vue'),
+      tell: () => import('@/components/tell.vue')
+    }
   }
 ]
 
