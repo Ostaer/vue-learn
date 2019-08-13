@@ -8,11 +8,9 @@ const routes = [
     component: home
   },
   {
-    path: '/argu/:name',
+    path: '/argu',
     component: () => import('@/components/argu.vue'),
-    props: {
-      name: 'liran'
-    }
+    props: route => ({ name: route.query.name })
   },
   {
     path: '/parent',
