@@ -1,4 +1,4 @@
-const home = () => import('@/components/Home.vue')
+const home = () => import('@/views/Home.vue')
 const routes = [
   {
     path: '/home',
@@ -9,30 +9,34 @@ const routes = [
   },
   {
     path: '/argu',
-    component: () => import('@/components/argu.vue'),
+    component: () => import('@/views/argu.vue'),
     props: route => ({ name: route.query.name })
   },
   {
     path: '/parent',
-    component: () => import('@/components/parent.vue'),
+    component: () => import('@/views/parent.vue'),
     children: [
       {
         path: 'child',
-        component: () => import('@/components/child.vue')
+        component: () => import('@/views/child.vue')
       }
     ]
   },
   {
     path: '/named_view',
     components: {
-      default: () => import('@/components/child.vue'),
-      email: () => import('@/components/email.vue'),
-      tell: () => import('@/components/tell.vue')
+      default: () => import('@/views/child.vue'),
+      email: () => import('@/views/email.vue'),
+      tell: () => import('@/views/tell.vue')
     }
   },
   {
     path: '/main',
     redirect: to => '/'
+  },
+  {
+    path: '/store',
+    component: () => import('@/views/store')
   }
 ]
 
