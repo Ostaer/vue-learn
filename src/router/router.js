@@ -3,6 +3,7 @@ const routes = [
   {
     path: '/home',
     name: 'Home',
+    alias: '/home_page',
     // component: () => import('@/components/Home.vue') //ES6懒加载 会生成一个单独的home.[hash].js按需加载
     component: home
   },
