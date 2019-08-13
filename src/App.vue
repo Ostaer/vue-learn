@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div>
-      <router-link to="/home">进入home</router-link>
+      <router-link :to='{name: "Home"}'>进入home</router-link>
     </div>
     <div>
       <router-view></router-view>
