@@ -1,11 +1,10 @@
-import Home from '@/components/Home'
-
+const home = () => import('@/components/Home.vue')
 const routes = [
   {
     path: '/home',
     name: 'Home',
     // component: () => import('@/components/Home.vue') //ES6懒加载 会生成一个单独的home.[hash].js按需加载
-    component: Home
+    component: home
   }
 ]
 
