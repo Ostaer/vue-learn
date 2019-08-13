@@ -4,6 +4,24 @@ import routes from './router'
 
 Vue.use(Router)
 
-export default new Router({
-  routes
+const router = new Router({ routes })
+
+router.beforeEach((to, from, next) => {
+  // NProgress.start()
+  let token = 'information'
+  if (to.path === '/login') {
+    if (token) {
+      next({ path: '/' })
+    } else {
+      //
+    }
+  }
+
+  if (!token && to.path !== '/login') {
+    next({ path: '/login' })
+  } else {
+    next()
+  }
 })
+
+export default router
