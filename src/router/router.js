@@ -10,7 +10,9 @@ const routes = [
   {
     path: '/argu/:name',
     component: () => import('@/components/argu.vue'),
-    props: true
+    props: {
+      name: 'liran'
+    }
   },
   {
     path: '/parent',
