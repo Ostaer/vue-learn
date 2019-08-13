@@ -1,42 +1,75 @@
 <template>
   <div id="app">
-    <button
-      v-for="tab in tabs"
-      v-bind:key="tab"
-      v-bind:class="['tab-button', { active: currentTab === tab }]"
-      v-on:click="currentTab = tab"
-    >{{ tab }}
-    </button>
-
-    <keep-alive>
-      <component
-        v-bind:is="currentTabComponent"
-        class="tab"
-      ></component>
-    </keep-alive>
+    {{ message }}
+    <br/>
+    <div class="box" ref="test"></div>
+    <div>
+      <button @click="message = 'abc'">更新message</button>
+    </div>
   </div>
 </template>
 
 <script>
-import tabPosts from '@/components/tabPosts'
-import tabArchive from '@/components/tabArchive'
 export default {
   name: 'App',
-  components: {
-    tabPosts,
-    tabArchive
-  },
   data () {
     return {
-      currentTab: 'Posts',
-      tabs: ['Posts', 'Archive']
+      message: 'Hello'
     }
   },
   computed: {
-    currentTabComponent: function () {
-      return 'tab-' + this.currentTab.toLowerCase()
+    resversedMessage: function () {
+      return this.message.split().reverse()
     }
+  },
+  methods: {
+    handler () {
+      console.log('I am handler!')
+    }
+  },
+  beforeCreate () {
+    console.log('beforeCreate钩子')
+    console.log(this) // VUe实例已经被初始化
+    console.log(this.message) // undefined 属性还未初始化
+    console.log(this.handler) // methods 还未初始化
+    console.log(this.$refs.test) // undefined  dom还未渲染
+  },
+  created () {
+    console.log('Created钩子')
+    console.log(this) // VUe实例已经被初始化
+    console.log(this.message) // Hello 属性已经初始化
+    console.log(this.handler) // methods 方法已经初始化
+    console.log(this.$refs.test) // undefined dom还未渲染
+  },
+  beforeMount () {
+    console.log('beforeMount钩子')
+    console.log(this) // VUe实例已经被初始化
+    console.log(this.message) // Hello 属性已经初始化
+    console.log(this.handler) // methods 方法已经初始化
+    console.log(this.$refs.test) // undefined dom还未渲染
+  },
+  mounted () {
+    console.log('mounted钩子')
+    console.log(this) // VUe实例已经被初始化
+    console.log(this.message) // Hello 属性已经初始化
+    console.log(this.handler) // methods 方法已经初始化
+    console.log(this.$refs.test) // <div class="box"></div> dom已经渲染完成
+  },
+  beforeUpdate () {
+    console.log('beforeUpdate钩子')
+    console.log(this) // VUe实例已经被初始化
+    console.log(this.message) // abc 属性已经更新
+    console.log(this.handler) // methods 方法已经初始化
+    console.log(this.$refs.test) // <div class="box"></div> dom已经渲染完成
+  },
+  updated () {
+    console.log('updated钩子')
+    console.log(this) // VUe实例已经被初始化
+    console.log(this.message) // abc 属性已经渲染到页面上
+    console.log(this.handler) // methods 方法已经初始化
+    console.log(this.$refs.test) // <div class="box"></div> dom已经渲染完成
   }
+
 }
 </script>
 
@@ -50,63 +83,12 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
-.tab-button {
-  padding: 6px 10px;
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
-  border: 1px solid #ccc;
-  cursor: pointer;
-  background: #f0f0f0;
-  margin-bottom: -1px;
-  margin-right: -1px;
-}
 
-.tab-button:hover {
-  background: #e0e0e0;
-}
-
-.tab-button.active {
-  background: #e0e0e0;
-}
-
-.tab {
-  border: 1px solid #ccc;
-  padding: 10px;
-}
-
-.posts-tab {
-  display: flex;
-}
-
-.posts-sidebar {
-  max-width: 40vw;
-  margin: 0;
-  padding: 0 10px 0 0;
-  list-style-type: none;
-  border-right: 1px solid #ccc;
-}
-
-.posts-sidebar li {
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  cursor: pointer;
-}
-
-.posts-sidebar li:hover {
-  background: #eee;
-}
-
-.posts-sidebar li.selected {
-  background: lightblue;
-}
-
-.selected-post-container {
-  padding-left: 10px;
-}
-
-.selected-post > :first-child {
-  margin-top: 0;
-  padding-top: 0;
+.box {
+  width: 500px;
+  height: 50px;
+  -moz-box-shadow: 2px 2px 5px #333333;
+  -webkit-box-shadow: 2px 2px 5px #333333;
+  box-shadow: 2px 2px 5px #333333;
 }
 </style>
