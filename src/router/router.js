@@ -27,6 +27,10 @@ const routes = [
       email: () => import('@/components/email.vue'),
       tell: () => import('@/components/tell.vue')
     }
+  },
+  {
+    path: '/main',
+    redirect: to => '/'
   }
 ]
 
