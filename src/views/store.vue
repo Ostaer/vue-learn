@@ -4,7 +4,7 @@
     <l-show :content="inputValue"></l-show>
     <p>Show Status: {{ status }}</p>
     <p>Show Name: {{ name }}</p>
-
+    <p>statusDouble: {{ statusDouble }}</p>
   </div>
 </template>
 
@@ -32,7 +32,10 @@ export default {
     }),
     ...mapState('user',{
       name: state => state.name
-    })
+    }),
+    statusDouble () {
+      return this.$store.getters.statusDouble
+    }
     // name () {
     //   return this.$store.state.user.name
     // }
