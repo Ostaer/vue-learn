@@ -6,7 +6,7 @@
     <p>Show Name: {{ name }}</p>
     <p>statusDouble: {{ statusDouble }}</p>
     <p>nameFirstLetter: {{ nameFirstLetter }}</p>
-    <button @click="status=inputValue">修改</button>
+    <button @click="UPDATE_STATUS">修改</button>
     <button @click="$store.commit('AddVersion')">修改版本</button>
     {{ $store.state.version }}
   </div>
@@ -15,7 +15,7 @@
 <script>
 import LInput from '@/components/Linput'
 import LShow from '@/components/LShow'
-import { mapState, mapGetters, mapMutations } from 'vuex'
+import { mapState, mapGetters, mapMutations, mapActions } from 'vuex'
 export default {
   name: 'store',
   components: {
@@ -61,6 +61,9 @@ export default {
     },
     ...mapMutations([
       'changeStatus'
+    ]),
+    ...mapActions([
+      'UPDATE_STATUS'
     ])
   }
 }
