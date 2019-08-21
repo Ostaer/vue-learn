@@ -6,6 +6,7 @@
     <p>Show Name: {{ name }}</p>
     <p>statusDouble: {{ statusDouble }}</p>
     <p>nameFirstLetter: {{ nameFirstLetter }}</p>
+    <button @click="status=inputValue">修改</button>
   </div>
 </template>
 
@@ -25,12 +26,17 @@ export default {
     }
   },
   computed: {
-    // status () {
-    //   return this.$store.state.status
-    // },
-    ...mapState({
-      status: state => state.status
-    }),
+    status: {
+      get() {
+        return this.$store.state.status
+      },
+      set (val) {
+        this.$store.commit('changeStatus', val)
+      }
+    },
+    // ...mapState({
+    //   status: state => state.status
+    // }),
     ...mapState('user',{
       name: state => state.name
     }),
