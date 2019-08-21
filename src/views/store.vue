@@ -5,13 +5,14 @@
     <p>Show Status: {{ status }}</p>
     <p>Show Name: {{ name }}</p>
     <p>statusDouble: {{ statusDouble }}</p>
+    <p>nameFirstLetter: {{ nameFirstLetter }}</p>
   </div>
 </template>
 
 <script>
 import LInput from '@/components/Linput'
 import LShow from '@/components/LShow'
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 export default {
   name: 'store',
   components: {
@@ -33,9 +34,14 @@ export default {
     ...mapState('user',{
       name: state => state.name
     }),
-    statusDouble () {
-      return this.$store.getters.statusDouble
-    }
+    // statusDouble () {
+    //   return this.$store.getters.statusDouble
+    // }
+    ...mapGetters([
+      'statusDouble',
+      'nameFirstLetter'
+    ]),
+
     // name () {
     //   return this.$store.state.user.name
     // }
