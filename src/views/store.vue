@@ -24,12 +24,18 @@ export default {
     }
   },
   computed: {
-    status () {
-      return this.$store.state.status
-    },
-    name () {
-      return this.$store.state.user.name
-    }
+    // status () {
+    //   return this.$store.state.status
+    // },
+    ...mapState({
+      status: state => state.status
+    }),
+    ...mapState('user',{
+      name: state => state.name
+    })
+    // name () {
+    //   return this.$store.state.user.name
+    // }
   },
   methods: {
     handleInput (val) {
