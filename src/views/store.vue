@@ -15,7 +15,7 @@
 <script>
 import LInput from '@/components/Linput'
 import LShow from '@/components/LShow'
-import { mapState, mapGetters } from 'vuex'
+import { mapState, mapGetters, mapMutations } from 'vuex'
 export default {
   name: 'store',
   components: {
@@ -33,7 +33,8 @@ export default {
         return this.$store.state.status
       },
       set (val) {
-        this.$store.commit('changeStatus', val)
+        // this.$store.commit('changeStatus', val)
+        this.changeStatus(val)
       }
     },
     // ...mapState({
@@ -57,7 +58,10 @@ export default {
   methods: {
     handleInput (val) {
       this.inputValue = val
-    }
+    },
+    ...mapMutations([
+      'changeStatus'
+    ])
   }
 }
 </script>
