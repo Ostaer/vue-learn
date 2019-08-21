@@ -1,5 +1,5 @@
 const state = {
-  //
+  name: 'AAA'
 }
 
 const mutaitons = {
