@@ -7,6 +7,8 @@
     <p>statusDouble: {{ statusDouble }}</p>
     <p>nameFirstLetter: {{ nameFirstLetter }}</p>
     <button @click="status=inputValue">修改</button>
+    <button @click="$store.commit('AddVersion')">修改版本</button>
+    {{ $store.state.version }}
   </div>
 </template>
 
